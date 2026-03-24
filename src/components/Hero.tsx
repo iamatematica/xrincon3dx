@@ -1,12 +1,22 @@
 import { motion } from 'motion/react';
-import { Box, Layers, Zap, PenTool as Tool } from 'lucide-react';
+import { Box, Layers, Cpu, PenTool as Tool } from 'lucide-react';
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center bg-gallery-white overflow-hidden border-b-2 border-brutal-black">
+      {/* Background Image Overlay */}
+      <div className="absolute inset-0 z-0 opacity-5 grayscale pointer-events-none">
+        <img 
+          src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1920" 
+          alt="3D Printing Background" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
       {/* Background elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 border-2 border-brutal-black rounded-full opacity-10 animate-pulse" />
-      <div className="absolute bottom-10 right-10 w-64 h-64 border-2 border-brutal-black rotate-45 opacity-10" />
+      <div className="absolute top-10 left-10 w-32 h-32 border-2 border-brutal-black rounded-full opacity-10 animate-pulse z-0" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 border-2 border-brutal-black rotate-45 opacity-10 z-0" />
       
       <div className="container mx-auto px-4 z-10">
         <motion.div
@@ -26,6 +36,7 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-brutal-black text-gallery-white px-8 py-4 font-bold uppercase text-lg brutal-shadow-hover transition-all"
             >
               Ver Catálogo
@@ -33,6 +44,7 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="border-2 border-brutal-black px-8 py-4 font-bold uppercase text-lg brutal-shadow-hover transition-all bg-neon-blue"
             >
               Pedir Personalizado
@@ -42,12 +54,12 @@ export const Hero = () => {
       </div>
 
       {/* Marquee */}
-      <div className="absolute bottom-0 w-full bg-brutal-black py-4 overflow-hidden border-t-2 border-brutal-black">
+      <div className="absolute bottom-0 w-full bg-brutal-black py-4 overflow-hidden border-t-2 border-brutal-black z-20">
         <div className="marquee-track">
           {[...Array(10)].map((_, i) => (
             <div key={i} className="flex items-center gap-8 px-4">
               <span className="text-gallery-white font-display text-2xl uppercase whitespace-nowrap">
-                3D PRINTING • CUSTOM DESIGN • PROTOTYPING • XRINCON3DX • 
+                3D PRINTING • FDM • SLA • PROTOTYPING • XRINCON3DX • 
               </span>
               <Layers className="text-neon-green w-6 h-6" />
             </div>
@@ -61,7 +73,7 @@ export const Hero = () => {
 export const Features = () => {
   const features = [
     { icon: Box, title: 'Genéricos', desc: 'Modelos listos para imprimir y disfrutar.', color: 'bg-neon-blue' },
-    { icon: Zap, title: 'Personalizados', desc: 'Tu toque personal en cada detalle.', color: 'bg-neon-pink' },
+    { icon: Cpu, title: 'Personalizados', desc: 'Tu toque personal en cada detalle técnico.', color: 'bg-neon-pink' },
     { icon: Tool, title: 'Por Encargo', desc: 'Diseños únicos desde cero para tus ideas.', color: 'bg-neon-green' },
   ];
 
